@@ -1,5 +1,8 @@
 package com.plurasight;
 
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 public class Employee {
     private int employeeID;
     private String name;
@@ -7,6 +10,8 @@ public class Employee {
     private double payRate;
     private double hoursWorked;
     private double overtimeHoursWorked;
+    private double startTime;
+    private double endTime;
 
     public Employee(int employeeID, String name, String department, double payRate, double hoursWorked) {
         this.employeeID = employeeID;
@@ -29,6 +34,26 @@ public class Employee {
         this.hoursWorked = 0;
         this.overtimeHoursWorked = 0;
     }
+
+    public void punchIn(LocalTime time){
+        this.startTime = Double.parseDouble(String.valueOf(time));
+    }
+
+    public LocalTime punchIn(){
+        return LocalTime.parse(String.valueOf(startTime));
+    }
+    public void punchOut(double time){
+        endTime = time;
+    }
+
+    public LocalTime punchOut(){
+        return LocalTime.parse(String.valueOf(endTime));
+    }
+
+    public void getHoursWorked(double startTime, double endTime){
+        this.hoursWorked = endTime - startTime;
+    }
+
 
     public double getTotalPay(){
         double overtimeChecker = getOvertimeHours();

@@ -24,6 +24,20 @@ public class Room {
 
     }
 
+    public void checkIn(){
+        isOccupied = true;
+        isDirty = true;
+        isAvailable = false;
+    }
+    public void checkOut(){
+        isOccupied = false;
+        cleanRoom();
+        isAvailable = true;
+    }
+    public void cleanRoom(){
+        isDirty = false;
+    }
+
     public int getNumberOfBeds() {
         return numberOfBeds;
     }
