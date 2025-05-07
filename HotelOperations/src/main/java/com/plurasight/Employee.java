@@ -19,6 +19,8 @@ public class Employee {
         this.department = department;
         this.payRate = payRate;
         this.hoursWorked = hoursWorked;
+        this.startTime = 0;
+        this.endTime = 0;
         if(hoursWorked > 40)
         {
             this.overtimeHoursWorked = hoursWorked - 40;
@@ -33,6 +35,13 @@ public class Employee {
         this.payRate = 0;
         this.hoursWorked = 0;
         this.overtimeHoursWorked = 0;
+        this.startTime = 0;
+        this.endTime = 0;
+    }
+
+
+    public void punchIn(double time){
+        setStartTime(time);
     }
 
     public void punchIn(LocalTime time){
@@ -42,16 +51,21 @@ public class Employee {
     public LocalTime punchIn(){
         return LocalTime.parse(String.valueOf(startTime));
     }
+
+
     public void punchOut(double time){
-        endTime = time;
+        setEndTime(time);
+    }
+    public void punchOut(LocalTime time){
+        this.endTime = Double.parseDouble(String.valueOf(time));
     }
 
     public LocalTime punchOut(){
         return LocalTime.parse(String.valueOf(endTime));
     }
 
-    public void getHoursWorked(double startTime, double endTime){
-        this.hoursWorked = endTime - startTime;
+    public double getHoursWorked(double startTime, double endTime){
+        return endTime - startTime;
     }
 
 
@@ -118,5 +132,21 @@ public class Employee {
 
     public void setOvertimeHoursWorked(double overtimeHoursWorked) {
         this.overtimeHoursWorked = overtimeHoursWorked;
+    }
+
+    public double getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(double startTime) {
+        this.startTime = startTime;
+    }
+
+    public double getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(double endTime) {
+        this.endTime = endTime;
     }
 }
