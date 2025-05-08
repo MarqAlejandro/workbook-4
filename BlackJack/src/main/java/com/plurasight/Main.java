@@ -5,6 +5,6 @@ public class Main {
 
     BlackJack.gameStart();
 
-    //currently only deals 1 card per player, need to deal 2 and have a decision maker for winner 
+    //currently only deals 1 card per player, need to deal 2 and have a decision maker for winner
     }
 }
