@@ -6,6 +6,8 @@ public class UserInterface {
 
     public static void OpenMenu(){
 
-        Dealership.fileLoad();
+       // Dealership.fileLoad();
+
+        Dealership.getAllVehicles();
     }
 }

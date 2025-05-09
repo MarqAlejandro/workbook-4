@@ -10,7 +10,7 @@ public class Dealership {
     private String name;
     private String address;
     private String phone;
-    private List<Vehicle> inventory = new ArrayList<>();
+    private static List<Vehicle> inventory = DealershipFileManager.getDealership();
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
@@ -30,7 +30,13 @@ public class Dealership {
 
     public void getVehiclesByType(String vehicleType){}
 
-    public void getAllVehicles(){}
+    public static void getAllVehicles(){
+        for (Vehicle vehicle : inventory){
+
+            System.out.println(vehicle.getVin());  //just for testing purposes right now
+        }
+
+    }
 
     public void addVehicles(Vehicle vehicle){}
 
