@@ -37,7 +37,8 @@ public class Hand {
     public void displayHand(){
         for(Card card: cardsInHand){
             card.flip();
-            System.out.println(card.getValue() + " " + card.getSuit());
+
+            System.out.print(" | " + card.getValue() + " " + card.getSuit() + " |\t");
             card.flip();
         }
     }

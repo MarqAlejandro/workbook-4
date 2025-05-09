@@ -5,6 +5,7 @@ public class Main {
 
     BlackJack.gameStart();
 
-    //currently only deals 1 card per player, need to deal 2 and have a decision maker for winner
     }
+
+    //game is functional, but ace doesn't flex to 1 if you're about to bus with it in your hand
 }

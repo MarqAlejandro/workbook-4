@@ -1,46 +1,51 @@
 package com.plurasight;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
+
 import java.util.List;
 
 public class BlackJack {
-    public static void gameStart() {
 
-        List<Player> players = new ArrayList<>();
-        Deck deck = new Deck();
-        deck.shuffle();
+    private static List<Player> players = new ArrayList<>();
 
+    private static Deck deck = GameMechanics.deckSetUp();
+
+    public static void gameStart() {                    //main game control method
+
+
+        playerSetUp();
+        gameSetUp();
+        gamePlay();
+        andTheWinnerIs();
+
+    }
+
+    public static void playerSetUp(){                   //method to get number of players via prompt and adds players to the arrayList
         int numberOfPlayers = GameMechanics.playerCount();
 
-        Player house = new Player("House");
-        players.add(house);
+        for (int i = 1; i <= numberOfPlayers; i++) {
 
-        for (int i = 1; i <= numberOfPlayers; i++) {                    //convert this to a method 
-            System.out.print("Enter Player's Name: ");
-            Player player = new Player(scanner.nextLine());
-
-            players.add(player);
-
+            players.add(GameMechanics.playerAdded());
         }
 
+        players.add(GameMechanics.houseAdded());
 
-        for (Player player : players){
-            System.out.println("---------------------------------------");
-            System.out.println(player.getName() + " was dealt 2 cards");
-            player.Deal(deck.deal());
-            player.Deal(deck.deal());
-            player.displayHand();
-            System.out.println();
 
-            System.out.println("This hand is worth " + player.getValue());
-            if(player.getValue() > 21){
-                System.out.println("BUST");
-            }
-            System.out.println("---------------------------------------\n");
+    }
 
+    public static void gameSetUp(){                 //method shell
+
+        GameMechanics.displayDealtCards(players,deck);
+    }
+
+    public static void gamePlay() {                 //method shell
+        for (Player player : players) {
+            System.out.println("\n\n\t\t" + player.getName() + "'s turn\n\n");
+            GameMechanics.hitOrStay(player, deck);
         }
+    }
 
+    public static void andTheWinnerIs(){            //method to decide a winner
         System.out.print("And the winner(s) is: ");
         int highestScore = 0;
         for(Player player : players){
@@ -51,12 +56,7 @@ public class BlackJack {
             }
 
         }
-        for(Player player : players){
-            if(player.getValue() == highestScore){
-                System.out.println(player.getName() + " with a score of " + player.getValue());
-            }
-        }
-
+        GameMechanics.printWinners(players, highestScore);
 
 
     }
