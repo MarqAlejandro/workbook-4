@@ -3,7 +3,7 @@ package com.CarDealership.data;
 import java.io.File;
 
 public class DealershipFileManager {
-   private static File file = new File("src/main/java/com/CarDealership/data/Inventory.csv");
+   private static File file = new File("src/main/resources/Inventory.csv");
 
    public static void fileCheck() {
        if (file.exists()) {
