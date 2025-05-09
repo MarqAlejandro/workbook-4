@@ -10,11 +10,40 @@ public class Dealership {
     private String name;
     private String address;
     private String phone;
-    private static List<Vehicle> inventory = DealershipFileManager.getDealership();
+    private static List<Vehicle> inventory = DealershipFileManager.getInventory();
 
     public Dealership(String name, String address, String phone) {
         this.name = name;
         this.address = address;
+        this.phone = phone;
+    }
+    public Dealership(){
+        this.name = "";
+        this.address = "";
+        this.phone = "";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -22,7 +51,7 @@ public class Dealership {
 
     public void getVehiclesByMakeModel(String make, String model){}
 
-    public void getVehiclesByYear(int min, int max){}
+    public  void getVehiclesByYear(int min, int max){}
 
     public void getVehiclesByColor(String color){}
 
@@ -30,7 +59,7 @@ public class Dealership {
 
     public void getVehiclesByType(String vehicleType){}
 
-    public static void getAllVehicles(){
+    public void getAllVehicles(){
         for (Vehicle vehicle : inventory){
 
             System.out.println(vehicle.getVin());  //just for testing purposes right now
@@ -44,7 +73,7 @@ public class Dealership {
 
 
 
-    public static void fileLoad(){
+    public void fileLoad(){
 
         DealershipFileManager.fileCheck();
     }
