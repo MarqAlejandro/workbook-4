@@ -20,7 +20,7 @@ public class DealershipFileManager {
            BufferedReader bufReader = new BufferedReader(new FileReader(file));     //BufferedReader variable that takes a FileReader as arguement that takes a .csv file arguement
            String FileInput;                                                                               //String Variable to hold transaction info
 
-          // bufReader.readLine();                                                                           //skip the first line, assumes that the first line is headers and garbage data
+           bufReader.readLine();                                                                           //skip the first line, assumes that the first line is headers and garbage data
 
            while ((FileInput = bufReader.readLine()) != null) {                                            //in the midst of while loop read a line from .csv file and load it onto String Variable and check if it comes out null
                String[] tokens = FileInput.split(Pattern.quote("|"));                                   //load the line onto a String array so that it can be partitioned by the pattern "|"

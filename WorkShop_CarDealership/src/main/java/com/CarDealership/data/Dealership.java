@@ -1,6 +1,7 @@
 package com.CarDealership.data;
 
 import com.CarDealership.model.Vehicle;
+import com.CarDealership.ui.UserInterface;
 
 import java.util.ArrayList;
 import java.util.List;
