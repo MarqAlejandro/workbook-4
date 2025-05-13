@@ -12,11 +12,24 @@ class CalculatorTest {
         int firstNumber = 2;
         int secondNumber = 4;
         int expectedResult = 6;
+
+        boolean expectedBoolean = true;
         Calculator cn = new Calculator();
+
         // act
         int actualFunctionResult = cn.add(firstNumber,secondNumber);
+        boolean actualFunctionBoolean;
+
+        if (expectedResult == actualFunctionResult){
+            actualFunctionBoolean = true;
+        }
+        else{
+            actualFunctionBoolean = false;
+        }
+
+
         // assert
-        assertEquals(expectedResult, actualFunctionResult);
+        assertTrue(actualFunctionBoolean);
 
     }
 

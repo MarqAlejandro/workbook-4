@@ -36,6 +36,17 @@ public class Vehicle {
 
     }
 
+    public void display(){
+        System.out.println("VIN: " + getVin() +
+                "| Year: " + getYear() +
+                "| Make: " + getMake() +
+                "| Model: " + getModel() +
+                "| Vehicle Type: " + getVehicleType() +
+                "| Color: " + getColor() +
+                "| Odometer: " + getOdometer() +
+                "| Price: " + getPrice());
+    }
+
     public int getVin() {
         return vin;
     }

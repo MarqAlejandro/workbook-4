@@ -62,16 +62,25 @@ public class Dealership {
 
     public void getAllVehicles(){
         for (Vehicle vehicle : inventory){
-
-            System.out.println(vehicle.getVin());  //just for testing purposes right now
+           vehicle.display();
         }
 
     }
 
-    public void addVehicles(Vehicle vehicle){}
+    public void addVehicles(Vehicle vehicle){
 
-    public void removeVehicles(Vehicle vehicle){}
+        inventory.add(vehicle);
+    }
 
+    public void removeVehicles(Vehicle vehicle) {
+        int vehiclePosition = 0;
+        for (Vehicle vehicle1 : inventory) {
+            if (vehicle1.getVin() == vehicle.getVin()) {
+                vehiclePosition = inventory.indexOf(vehicle1);
+            }
+        }
+        inventory.remove(vehiclePosition);
+    }
 
 
     public void fileLoad(){

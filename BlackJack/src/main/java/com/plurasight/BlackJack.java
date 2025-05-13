@@ -18,6 +18,11 @@ public class BlackJack {
         gamePlay();
         andTheWinnerIs();
 
+
+    }
+
+    public void test(){
+        System.out.println("test");
     }
 
     public static void playerSetUp(){                   //method to get number of players via prompt and adds players to the arrayList

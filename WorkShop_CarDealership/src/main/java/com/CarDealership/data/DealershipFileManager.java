@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class DealershipFileManager {
+
    private static File file = new File("src/main/resources/Inventory.csv");
 
    public static List<Vehicle> getInventory(){
@@ -80,8 +81,10 @@ public class DealershipFileManager {
        return dealership;
    }
 
+   // this method needs to write to the Inventory.csv file
+/*
    public static void saveDealerShip(){}
-
+*/
    public static void fileCheck() {
        if (file.exists()) {
            System.out.println("its Alive");

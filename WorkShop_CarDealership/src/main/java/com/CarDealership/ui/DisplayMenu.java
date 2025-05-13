@@ -8,7 +8,7 @@ public class DisplayMenu {
                 
                 Reports Display Screen, please input one of the following: \
                 
-                \t1) - Search by Price Range"\
+                \t1) - Search by Price Range\
                 
                 \t2) - Search by make/model\
                 

@@ -2,6 +2,8 @@ package com.CarDealership.ui;
 
 import com.CarDealership.data.Dealership;
 import com.CarDealership.data.DealershipFileManager;
+import com.CarDealership.model.Vehicle;
+import com.CarDealership.model.vehicleCreator;
 
 import java.util.Scanner;
 
@@ -25,6 +27,9 @@ public class UserInterface {
         scanner.nextLine();
 
         switch (userInput){
+
+            //all display methods need to be fleshed out__________________________________________________
+            /*
             case 1:
                 dealership.getVehiclesByPrice(0,0);
                 System.out.println("This");
@@ -49,20 +54,22 @@ public class UserInterface {
                 dealership.getVehiclesByType("");
                 System.out.println("progress");
                 break;
+          */
             case 7:
                 dealership.getAllVehicles();
-                System.out.println("!");
+                display();
                 break;
 
-
-                //maybe even make a helper class for this
+            //___________________________________________________________________________________________
             case 8:
-                //create a method that prompts the user to input info for a vehicle, return a vehicle object
-                //dealership.addVehicles(// vehicle from prompt will go here);
+                Vehicle addVehicle = vehicleCreator.createVehicle();
+                dealership.addVehicles(addVehicle);
+                display();
                 break;
             case 9:
-                //create a method that prompts the user to input info for a vehicle, return a vehicle object
-               // dealership.removeVehicles(// vehicle from prompt will go here);
+                Vehicle rmVehicle = vehicleCreator.createVehicle();
+                dealership.removeVehicles(rmVehicle);
+                display();
                 break;
             case 99:
             default:
