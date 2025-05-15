@@ -11,9 +11,9 @@ public class Dealership {
     private String name;
     private String address;
     private String phone;
-    private static List<Vehicle> inventory = DealershipFileManager.getInventory();
+    private static List<Vehicle> inventory = DealershipFileManager.getInventory();                  //gets list from the fileManager class
 
-    public Dealership(String name, String address, String phone) {
+    public Dealership(String name, String address, String phone) {                                  //constructors
         this.name = name;
         this.address = address;
         this.phone = phone;
@@ -24,7 +24,7 @@ public class Dealership {
         this.phone = "";
     }
 
-    public String getName() {
+    public String getName() {                                                                   //getters and setters
         return name;
     }
 
@@ -48,7 +48,7 @@ public class Dealership {
         this.phone = phone;
     }
 
-    public void getVehiclesByPrice(double min,double max){
+    public void getVehiclesByPrice(double min,double max){                                              //for loop and print out vehicles within the range
         boolean isFound = false;
         for (Vehicle vehicle : inventory){
             if( (vehicle.getPrice() >= min) && (vehicle.getPrice() <= max) ){
@@ -62,7 +62,7 @@ public class Dealership {
 
     }
 
-    public void getVehiclesByMakeModel(String make, String model){
+    public void getVehiclesByMakeModel(String make, String model){                                  //for loop and print out vehicles that have that exact make and model inputted
         boolean isFound = false;
         for (Vehicle vehicle : inventory){
             if((vehicle.getMake().equalsIgnoreCase(make)) && (vehicle.getModel().equalsIgnoreCase(model))){
@@ -76,7 +76,7 @@ public class Dealership {
         }
     }
 
-    public  void getVehiclesByYear(int min, int max){
+    public  void getVehiclesByYear(int min, int max){                                           //for loop and print out vehicles that are within the year range
         boolean isFound = false;
         for (Vehicle vehicle : inventory){
             if( (vehicle.getYear() >= min) && (vehicle.getYear() <= max) ){
@@ -90,7 +90,7 @@ public class Dealership {
 
     }
 
-    public void getVehiclesByColor(String color){
+    public void getVehiclesByColor(String color){                                           //for loop and print out vehicles that have that color
         boolean isFound = false;
         for (Vehicle vehicle : inventory){
             if(vehicle.getColor().equalsIgnoreCase(color)) {
@@ -103,7 +103,7 @@ public class Dealership {
             System.out.println("No results in the Database");
         }
     }
-    public void getVehiclesByMileage(int min, int max){
+    public void getVehiclesByMileage(int min, int max){                                     //for loop and print out vehicles that are within that mileage range
         boolean isFound = false;
         for (Vehicle vehicle : inventory){
             if( (vehicle.getOdometer() >= min) && (vehicle.getOdometer() <= max) ){
@@ -116,7 +116,7 @@ public class Dealership {
         }
     }
 
-    public void getVehiclesByType(String vehicleType){
+    public void getVehiclesByType(String vehicleType){                                  //for loop and print out vehicles that are that vehicle type
         boolean isFound = false;
         for (Vehicle vehicle : inventory){
             if(vehicle.getVehicleType().equalsIgnoreCase(vehicleType)) {
@@ -129,26 +129,27 @@ public class Dealership {
         }
     }
 
-    public void getAllVehicles(){
+    public void getAllVehicles(){                                                       //print all vehicles
         for (Vehicle vehicle : inventory){
            vehicle.display();
         }
     }
-    public void addVehicles(Vehicle vehicle){
+    public void addVehicles(Vehicle vehicle){                                       //adds to List
         inventory.add(vehicle);
     }
-    public void removeVehicles(Vehicle vehicle) {
+    public void removeVehicles(Vehicle vehicle) {                                   //goes through list and finds vehicles with the exact same VIN and gets the position of it in the arrayList
         int vehiclePosition = 0;
         for (Vehicle vehicle1 : inventory) {
             if (vehicle1.getVin() == vehicle.getVin()) {
                 vehiclePosition = inventory.indexOf(vehicle1);
             }
         }
-        inventory.remove(vehiclePosition);
-    }
-    public void fileLoad(){
-        DealershipFileManager.fileCheck();
+        inventory.remove(vehiclePosition);                                      //removes the vehicle at the found position of the arrayList
     }
 
+    public void fileSave(){                                                     //using the parameters save the dealership and List to a .csv file
+        DealershipFileManager.saveDealerShipAndListData(this.name, this.address, this.phone, inventory);
+
+    }
 
 }

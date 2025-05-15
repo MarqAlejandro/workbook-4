@@ -1,8 +1,8 @@
 package com.CarDealership.model;
 
-public class Vehicle {
+public class Vehicle {                                                               //vehicle class to hold all vehicle data
 
-    private int vin;
+    private int vin;                                                                //variables are set
     private int year;
     private String make;
     private String model;
@@ -11,7 +11,7 @@ public class Vehicle {
     private int odometer;
     private double price;
 
-    public Vehicle(int vin, int year, String make,
+    public Vehicle(int vin, int year, String make,                                 //constructors to initialize the variables
                    String model, String vehicleType,
                    String color, int odometer, double price) {
         this.vin = vin;
@@ -24,7 +24,7 @@ public class Vehicle {
         this.price = price;
     }
 
-    public Vehicle() {
+    public Vehicle() {                                                  //empty constructor
         this.vin = 0;
         this.year = 0;
         this.make = "";
@@ -36,7 +36,7 @@ public class Vehicle {
 
     }
 
-    public void display(){
+    public void display(){                                          //display all vehicles information
         System.out.println("VIN: " + getVin() +
                 "| Year: " + getYear() +
                 "| Make: " + getMake() +
@@ -47,7 +47,7 @@ public class Vehicle {
                 "| Price: " + getPrice());
     }
 
-    public int getVin() {
+    public int getVin() {                                           //getters and setters
         return vin;
     }
 

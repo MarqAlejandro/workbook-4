@@ -9,27 +9,23 @@ import java.util.regex.Pattern;
 
 public class DealershipFileManager {
 
-   private static File file = new File("src/main/resources/Inventory.csv");
+   private static File file = new File("src/main/resources/Inventory.csv");                 //pre-determined path can be Copy/Pasted by right-clicking on intellij's project file list
 
    public static List<Vehicle> getInventory(){
 
        List<Vehicle> inventoryOfVehicles = new ArrayList<>();
 
        try {
-           //System.out.println("Loading Vehicles' Information");
 
            BufferedReader bufReader = new BufferedReader(new FileReader(file));     //BufferedReader variable that takes a FileReader as arguement that takes a .csv file arguement
-           String FileInput;                                                                               //String Variable to hold transaction info
+           String FileInput;
 
            bufReader.readLine();                                                                           //skip the first line, assumes that the first line is headers and garbage data
 
            while ((FileInput = bufReader.readLine()) != null) {                                            //in the midst of while loop read a line from .csv file and load it onto String Variable and check if it comes out null
                String[] tokens = FileInput.split(Pattern.quote("|"));                                   //load the line onto a String array so that it can be partitioned by the pattern "|"
                Vehicle vehicle = new Vehicle();             //create an empty Vehicle object
-               if(tokens.length == 3){
-
-               }
-               else if (tokens.length == 8) {
+                if (tokens.length == 8) {                                                                  //will only load the vehicle's infomation if there is
                    vehicle.setVin(Integer.parseInt(tokens[0]));
 
                    vehicle.setYear(Integer.parseInt(tokens[1]));
@@ -38,7 +34,7 @@ public class DealershipFileManager {
 
                    vehicle.setModel(tokens[3]);
 
-                   vehicle.setVehicleType(tokens[4]);                                   //will load and set all transaction information only if there is exactly 5 elements in the String Array
+                   vehicle.setVehicleType(tokens[4]);
 
                    vehicle.setColor(tokens[5]);
 
@@ -60,9 +56,9 @@ public class DealershipFileManager {
        return inventoryOfVehicles;
    }
 
-   public static Dealership getDealership(){
+   public static Dealership getDealership(){                                                            //reads the .csv file and reads only the 1st line to get the Dealership's information
        Dealership dealership = new Dealership();
-       BufferedReader bufReader = null;     //BufferedReader variable that takes a FileReader as arguement that takes a .csv file arguement
+       BufferedReader bufReader = null;
        try {
            bufReader = new BufferedReader(new FileReader(file));
            String FileInput = bufReader.readLine();
@@ -81,16 +77,37 @@ public class DealershipFileManager {
        return dealership;
    }
 
-   // this method needs to write to the Inventory.csv file
-/*
-   public static void saveDealerShip(){}
-*/
-   public static void fileCheck() {
-       if (file.exists()) {
-           System.out.println("its Alive");
-       } else {
-           System.out.println("the file does not exist");
+   // this method overwrites to the Inventory.csv file
+
+   public static void saveDealerShipAndListData(String name, String address, String phone, List<Vehicle> inventory){            //saves the data to a .csv file via FileWriter
+       try {
+           String delimiter = "|";
+           String nLine = "\n";
+           FileWriter fileWriter = new FileWriter("src/main/resources/Inventory.csv");
+
+           fileWriter.write(name + delimiter +
+                   address + delimiter + phone + nLine);
+
+           for (Vehicle vehicle : inventory){
+               fileWriter.write(
+                     vehicle.getVin() + delimiter
+                       + vehicle.getYear() + delimiter
+                       + vehicle.getMake() + delimiter
+                       + vehicle.getModel() + delimiter
+                       + vehicle.getVehicleType() + delimiter
+                       + vehicle.getColor() + delimiter
+                       + vehicle.getOdometer() + delimiter
+                       + vehicle.getPrice() + nLine );
+           }
+
+           fileWriter.close();
+
+
+       } catch (IOException e) {
+           System.out.println("File was not found, please make sure the pathing is correct");
        }
+
    }
+
 
 }

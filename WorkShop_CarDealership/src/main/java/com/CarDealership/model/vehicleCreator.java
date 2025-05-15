@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class vehicleCreator {
 
-    public static Vehicle createVehicle(){
+    public static Vehicle createVehicle(){                          //prompts the user for vehicle information, returns a new vehicle object
         try {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter VIN: ");
@@ -40,11 +40,11 @@ public class vehicleCreator {
 
         }
         catch (InputMismatchException e){
-            System.out.println("1 or more inputs were incorrect. Please Try Again.");
+            System.out.println("1 or more inputs were incorrect. Please Try Again.");                   //if 1 or more inputs are of the wrong data type then it will loop back to the beginning
             createVehicle();
         }
 
 
-        return null;
+        return new Vehicle();
     }
 }

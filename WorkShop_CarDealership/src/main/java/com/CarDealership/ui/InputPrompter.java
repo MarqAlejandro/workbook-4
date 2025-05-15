@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class InputPrompter {
 
-    public static String getSingleString(){
+    public static String getSingleString(){                     //prompt the user for input, returns a String
         String singleString = "";
         try {
             System.out.print("Enter: ");
@@ -20,7 +20,7 @@ public class InputPrompter {
         return singleString;
     }
 
-    public static int getIntInput(){
+    public static int getIntInput(){                            //using the getSingleString() method, assuming its correct, it parses the String into an int
         int convertedStringToInt = 0;
         try{
             convertedStringToInt = Integer.parseInt(getSingleString());
@@ -33,7 +33,7 @@ public class InputPrompter {
         return convertedStringToInt;
     }
 
-    public static double getDoubleInput(){
+    public static double getDoubleInput(){                    //using the getSingleString() method, assuming its correct, it parses the String into a double
         double convertedStringToDouble = 0;
         try{
             convertedStringToDouble = Double.parseDouble(getSingleString());

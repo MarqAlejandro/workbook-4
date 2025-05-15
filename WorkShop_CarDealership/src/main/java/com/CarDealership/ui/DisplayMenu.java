@@ -2,7 +2,7 @@ package com.CarDealership.ui;
 
 public class DisplayMenu {
 
-    public static void displayMenu(){
+    public static void displayMenu(){                       //menu displaying class
 
         System.out.print("""
                 
