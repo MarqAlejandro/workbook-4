@@ -26,6 +26,8 @@ public class DisplayMenu {
                 
                 \t9) - Remove a Vehicle\
                 
+                \t10) - Sale / Lease a Vehicle\
+                
                 \t99) - Quit
                 
                 Enter:\s""");

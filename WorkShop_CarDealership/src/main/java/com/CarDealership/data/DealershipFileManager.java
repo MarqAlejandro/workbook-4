@@ -49,7 +49,7 @@ public class DealershipFileManager {
            bufReader.close();
 
        } catch (IOException e) {                                                                       //in case of an error with I/O, however should never proc
-           System.out.println("error with .csv file naming, please check if its the correct save file");
+           System.out.println("error with .csv file naming or pathing, please check if its the correct save file");
 
        }
 

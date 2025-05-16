@@ -1,19 +1,21 @@
 package com.CarDealership.contract;
 
+import com.CarDealership.model.Vehicle;
+
 public abstract class Contract {
 
     protected String date;
     protected String name;
     protected String email;
-    protected boolean isSold;
+    protected Vehicle vehicle;
     protected double totalPrice;
     protected double monthlyPayment;
 
-    public Contract(String date, String name, String email, boolean isSold) {
+    public Contract(String date, String name, String email, Vehicle vehicle) {
         this.date = date;
         this.name = name;
         this.email = email;
-        this.isSold = isSold;
+        this.vehicle = vehicle;
         this.totalPrice = 0;
         this.monthlyPayment = 0;
     }
@@ -22,7 +24,8 @@ public abstract class Contract {
         this.date = "";
         this.name = "";
         this.email = "";
-        this.isSold = false;
+        this.vehicle = new Vehicle();
+        this.totalPrice = 0;
         this.monthlyPayment = 0;
     }
 
@@ -50,12 +53,12 @@ public abstract class Contract {
         this.email = email;
     }
 
-    public boolean isSold() {
-        return isSold;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setSold(boolean sold) {
-        isSold = sold;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
     //abstract methods below
     public abstract double getTotalPrice();

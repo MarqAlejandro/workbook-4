@@ -36,6 +36,11 @@ public class Vehicle {                                                          
 
     }
 
+    public Vehicle(int vin, double price) {
+        this.vin = vin;
+        this.price = price;
+    }
+
     public void display(){                                          //display all vehicles information
         System.out.println("VIN: " + getVin() +
                 "| Year: " + getYear() +

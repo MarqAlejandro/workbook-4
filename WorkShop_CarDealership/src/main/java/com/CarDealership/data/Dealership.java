@@ -1,9 +1,7 @@
 package com.CarDealership.data;
 
 import com.CarDealership.model.Vehicle;
-import com.CarDealership.ui.UserInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Dealership {
@@ -134,17 +132,44 @@ public class Dealership {
            vehicle.display();
         }
     }
+
+    public void vehicleInStock(int vin){
+        boolean isFound = false;
+        int vehiclePosition = 0;
+        for (Vehicle vehicle1 : inventory) {
+            if (vehicle1.getVin() == vin) {
+                isFound = true;
+            }
+        }
+        if(isFound) {
+            System.out.println("Vehicle was found in database.");                       //removes the vehicle at the found position of the arrayList
+        }
+        else{
+            System.out.println("No vehicle found in database. please try again");
+        }
+
+    }
+
+
     public void addVehicles(Vehicle vehicle){                                       //adds to List
         inventory.add(vehicle);
     }
-    public void removeVehicles(Vehicle vehicle) {                                   //goes through list and finds vehicles with the exact same VIN and gets the position of it in the arrayList
+
+    public void removeVehicles(int vin) {                                   //goes through list and finds vehicles with the exact same VIN and gets the position of it in the arrayList
+        boolean isFound = false;
         int vehiclePosition = 0;
         for (Vehicle vehicle1 : inventory) {
-            if (vehicle1.getVin() == vehicle.getVin()) {
+            if (vehicle1.getVin() == vin) {
                 vehiclePosition = inventory.indexOf(vehicle1);
+                isFound = true;
             }
         }
-        inventory.remove(vehiclePosition);                                      //removes the vehicle at the found position of the arrayList
+        if(isFound) {
+            inventory.remove(vehiclePosition);                                      //removes the vehicle at the found position of the arrayList
+        }
+        else{
+            System.out.println("No vehicle found in database. please try again");
+        }
     }
 
     public void fileSave(){                                                     //using the parameters save the dealership and List to a .csv file

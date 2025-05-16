@@ -1,5 +1,6 @@
 package com.CarDealership.ui;
 
+import com.CarDealership.contract.SalesContract;
 import com.CarDealership.data.Dealership;
 import com.CarDealership.data.DealershipFileManager;
 import com.CarDealership.model.Vehicle;
@@ -67,9 +68,23 @@ public class UserInterface {
                 display();
                 break;
             case 9:
-                Vehicle rmVehicle = vehicleCreator.createVehicle();                         //removes a vehicle from the list and from the .csv file
-                dealership.removeVehicles(rmVehicle);
+                System.out.println("To remove a Vehicle, Please enter its VIN.");
+                int vin = InputPrompter.getIntInput();                                                                        //removes a vehicle from the list and from the .csv file
+                dealership.removeVehicles(vin);
                 dealership.fileSave();
+                display();
+                break;
+            case 10:
+                String userChoice = ContractPrompter.saleOrLease();
+                if(userChoice.equalsIgnoreCase("s")) {
+                    SalesContract salesContract = com.CarDealership.ui.ContractMediator.displayAndReturnSaleContract();
+                    dealership.removeVehicles(salesContract.getVehicle().getVin());
+                    dealership.fileSave();
+                }
+                else{
+                    //mirror this ^ but for lease
+                }
+
                 display();
                 break;
             case 99:                                                                        //exit method

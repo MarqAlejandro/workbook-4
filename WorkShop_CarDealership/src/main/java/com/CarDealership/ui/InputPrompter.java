@@ -46,6 +46,19 @@ public class InputPrompter {
         return convertedStringToDouble;
     }
 
+    public static boolean getBooleanInput(){
+        boolean convertedStringToBoolean = false;
+        try{
+            convertedStringToBoolean = Boolean.parseBoolean(getSingleString());
+
+            return convertedStringToBoolean;
+        }
+        catch (InputMismatchException e){
+            System.out.println("String Input Failed to Convert, need exactly \"true\" or \"false\".");
+        }
+        return convertedStringToBoolean;
+    }
+
 
 
 }
