@@ -1,5 +1,6 @@
 package com.CarDealership.ui;
 
+import com.CarDealership.contract.LeaseContract;
 import com.CarDealership.contract.SalesContract;
 import com.CarDealership.data.Dealership;
 import com.CarDealership.data.DealershipFileManager;
@@ -81,8 +82,10 @@ public class UserInterface {
                     dealership.removeVehicles(salesContract.getVehicle().getVin());
                     dealership.fileSave();
                 }
-                else{
-                    //mirror this ^ but for lease
+                else if(userChoice.equalsIgnoreCase("l")){
+                    LeaseContract leaseContract = ContractMediator.displayAndReturnLeaseContract();
+                    dealership.removeVehicles(leaseContract.getVehicle().getVin());
+                    dealership.fileSave();
                 }
 
                 display();

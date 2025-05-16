@@ -100,7 +100,7 @@ public class ContractFileManager {
         try {
             fileWriter = new FileWriter(file, true);
 
-            fileWriter.write("SALE" + delimiter +
+            fileWriter.write("\nSALE" + delimiter +
                     saleContract.getDate() + delimiter +
                     saleContract.getName() + delimiter +
                     saleContract.getEmail() + delimiter +
@@ -138,6 +138,40 @@ public class ContractFileManager {
     }
 
     //build similar method for leases
+
+    public static void saveLeaseContractData(LeaseContract leaseContract){
+        String delimiter = "|";
+        String nLine = "\n";
+        FileWriter fileWriter = null;
+        try {
+            fileWriter = new FileWriter(file, true);
+
+            fileWriter.write("\nLEASE" + delimiter +
+                    leaseContract.getDate() + delimiter +
+                    leaseContract.getName() + delimiter +
+                    leaseContract.getEmail() + delimiter +
+                    leaseContract.vehicle.getVin() + delimiter +
+                    leaseContract.vehicle.getYear() + delimiter +
+                    leaseContract.vehicle.getMake() + delimiter +
+                    leaseContract.vehicle.getModel() + delimiter +
+                    leaseContract.vehicle.getVehicleType() + delimiter +
+                    leaseContract.vehicle.getColor() + delimiter +
+                    leaseContract.vehicle.getOdometer() + delimiter +
+                    leaseContract.vehicle.getPrice() + delimiter +
+
+
+                    leaseContract.getExpectedEndingValue(leaseContract.vehicle.getPrice()) + delimiter +
+                    (int) leaseContract.getLeaseFee(leaseContract.vehicle.getPrice()) + delimiter +
+                    leaseContract.getTotalPrice() + delimiter +
+                    (int) leaseContract.getMonthlyPayment());
+
+            fileWriter.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 
     public static void fileExist(){
 

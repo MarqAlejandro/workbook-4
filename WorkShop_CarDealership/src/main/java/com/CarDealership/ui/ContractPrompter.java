@@ -1,5 +1,6 @@
 package com.CarDealership.ui;
 
+import com.CarDealership.contract.LeaseContract;
 import com.CarDealership.contract.SalesContract;
 import com.CarDealership.model.Vehicle;
 import com.CarDealership.model.vehicleCreator;
@@ -42,6 +43,19 @@ public class ContractPrompter {
 
     }
 
+    public static LeaseContract getLeaseContract(){
+        System.out.println("Enter Today's Date (Formatted as mm/dd/yyyy).");
+        String date = InputPrompter.getSingleString();
+        System.out.println("Enter Name.");
+        String name = InputPrompter.getSingleString();
+        System.out.println("Enter E-Mail.");
+        String email = InputPrompter.getSingleString();
 
-    //need prompters so i can make a leaseContract object
+        System.out.println("Enter the following information for the car being sold");
+        Vehicle vehicle = vehicleCreator.createVehicle();
+
+        return new LeaseContract(date,name,email,vehicle);
+    }
+
+
 }

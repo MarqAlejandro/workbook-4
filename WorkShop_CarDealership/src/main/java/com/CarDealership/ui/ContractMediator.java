@@ -1,6 +1,7 @@
 package com.CarDealership.ui;
 
 import com.CarDealership.contract.ContractFileManager;
+import com.CarDealership.contract.LeaseContract;
 import com.CarDealership.contract.SalesContract;
 
 public class ContractMediator {
@@ -13,5 +14,11 @@ public class ContractMediator {
 
     }
 
-    //working on lease contract later make sure sale contract works first
+    public static LeaseContract displayAndReturnLeaseContract(){
+        LeaseContract leaseContract = ContractPrompter.getLeaseContract();
+        ContractFileManager.saveLeaseContractData(leaseContract);
+
+        return leaseContract;
+    }
+
 }
